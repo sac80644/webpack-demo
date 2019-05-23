@@ -1,9 +1,4 @@
 const path = require('path');
-const cleanwebpackplugin = require('clean-webpack-plugin');
-
-const plugins = [
-    new cleanwebpackplugin([path.resolve(__dirname, 'dist')])
-];
 
 module.exports = {
     entry: './src/index.js',
@@ -19,9 +14,13 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif|ico)$/,
+                use: [
+                    'file-loader'
+                ]
             }
         ]
-
-    },
-    plugins: plugins
+    }
 };
