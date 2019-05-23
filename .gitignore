@@ -1,1 +1,4 @@
 node_modules/
+dist/*.woff
+dist/*.woff2
+dist/*.js
