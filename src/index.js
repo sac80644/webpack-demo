@@ -11,7 +11,7 @@ function component(){
     const btnElement = document.createElement('div');
 
     // Lodash
-    elementOne.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    elementOne.innerHTML = _.join(['Hello', 'webpack!!!'], ' ');
     elementOne.classList.add('hello');
 
     // Add image to div
@@ -40,6 +40,7 @@ function component(){
 
 document.body.appendChild(component());
 
+//if using hmr with webpack-dev-server (npm start)
 if (module.hot) {
     module.hot.accept('./print.js', function() {
         console.log('Accepting the updated printMe module!');

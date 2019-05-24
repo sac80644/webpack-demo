@@ -17,13 +17,14 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]),
         new HtmlWebpackPlugin({
-            title: 'Hot Module Replacement with webpack-dev-server'
+            title: 'webpack-dev-middleware'
         }),
         new webpack.HotModuleReplacementPlugin()
     ],
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     module: {
         rules: [
