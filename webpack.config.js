@@ -3,23 +3,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
+const environment = "development";
+
 module.exports = {
-    mode: 'development',
-    entry: {
-        app: './src/index.js'
-        // print: './src/print.js'
-    },
-    devtool: 'inline-source-map',
+    mode: environment,
+    //webpack-dev-server hmr
     devServer: {
         contentBase: './dist',
         hot: true
     },
+    entry: [
+        // Add the client which connects to our middleware
+        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+        // And then the actual application
+        './src/index.js'
+    ],
+    // devtool: 'inline-source-map',
+    devtool: '#source-map',
     plugins: [
         new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]),
         new HtmlWebpackPlugin({
             title: 'HMR with Stylesheets'
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.NoEmitOnErrorsPlugin()
     ],
     output: {
         filename: '[name].bundle.js',

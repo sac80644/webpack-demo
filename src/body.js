@@ -10,15 +10,15 @@ export default function component(){
     const btnElement = document.createElement('div');
 
     // Lodash
-    elementOne.innerHTML = _.join(['Hello', 'webpack.  HMR working!  Two hot modules, print and body.'], ' ');
-    elementOne.classList.add('hello');
+    elementOne.innerHTML = _.join(['Hello', 'webpack.  HMR working!  Two hot modules, print and body. Now using webpack-hot-middleware!'], ' ');
+    // elementOne.classList.add('hello');
 
     // Add image to div
     const myIcon = new Image();
     myIcon.src = Icon;
     outerElement.appendChild(myIcon);
 
-    // elementTwo.innerHTML = _.join(['<p>', JSON.stringify(Data), '</p>'], '')
+    //hidden data
     hiddenElement.type = 'hidden';
     hiddenElement.id = 'hiddenData';
     hiddenElement.value = JSON.stringify(Data);

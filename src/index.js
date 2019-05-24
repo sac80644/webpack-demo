@@ -1,7 +1,7 @@
 import printMe from './print.js';
 import component from './body.js';
 
-//if using hmr with webpack-dev-server (npm start)
+//if using hmr with webpack-dev-server (npm start) or webpack-hot-middleware with express server (npm serve)
 if (module.hot) {
     module.hot.accept('./print.js', function() {
         console.log('Accepting the updated printMe module!');
@@ -16,6 +16,8 @@ if (module.hot) {
             var body = component();
             body.id = 'MainBody';
             document.body.replaceChild(body, existingNode);
+
+            //need to set binding again since button was re-created
             var btn = document.getElementById('btnClickMe');
             var data = document.getElementById('hiddenData');
             btn.onclick = function() { printMe(data) };
@@ -32,8 +34,8 @@ if(!document.getElementById("MainBody"))
     document.body.appendChild(body);
 }
 
-
-(function bindBtn() {
+//bind button to print function
+(function() {
     var btn = document.getElementById('btnClickMe');
     var data = document.getElementById('hiddenData');
     btn.onclick = function() { printMe(data) };
