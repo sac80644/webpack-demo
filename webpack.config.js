@@ -17,7 +17,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]),
         new HtmlWebpackPlugin({
-            title: 'webpack-dev-middleware'
+            title: 'HMR with Stylesheets'
         }),
         new webpack.HotModuleReplacementPlugin()
     ],
